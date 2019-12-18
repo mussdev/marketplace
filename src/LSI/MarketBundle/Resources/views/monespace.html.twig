@@ -287,23 +287,23 @@
                         <div class="row pad-top-large">
                           <div class="col-md-9" style="text-align:left">
                             <!-- bloc habilitations -->
-                                                                                                                    <br>
-                                                                                                                    <div class="headline v3 text-center"><h4>Ajout d'un membre</h4></div></br>
-                                                                                                                   
-                                                                                                                  <div class="col-md-5">
- 
-                                                                                                                      <figure class="image-box">
-                                                                                                                          <img src="{{ asset('bundles/lsimarket/images/member.jpg') }}" height="189" width="165" alt="">
-                                                                                                                      </figure>
-                                                                                                                      <br>
-                                                                                                                       <label class="custom-file">
-                                                                                                                            <input type="file" id="file" class="custom-file-input">
-                                                                                                                            <span class="custom-file-control"></span>
-                                                                                                                            </label> 
-                                                                                                                  </div>
-                                                                                                                  <div class="col-md-7">
-                                                                                                                     <div class="form-layout">
+                                <br>
+                                <div class="headline v3 text-center"><h4>Ajout d'un membre</h4></div></br>
 
+                              <div class="col-md-5">
+
+                                  <figure class="image-box">
+                                      <img src="{{ asset('bundles/lsimarket/images/member.jpg') }}" height="189" width="165" alt="">
+                                  </figure>
+                                  <br>
+                                   <label class="custom-file">
+                                        <input type="file" id="file" class="custom-file-input">
+                                        <span class="custom-file-control"></span>
+                                        </label>
+                              </div>
+                              <div class="col-md-7">
+                                 <div class="form-layout">
+{#
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="form-control-label">Prénom: <span class="tx-danger">*</span></label>
@@ -334,33 +334,37 @@
                   <input class="form-control" type="text" name="fonction" value="" placeholder="Entrer la fonction">
                 </div>
               </div><!-- col-6 -->
-             
-              
 
-                                                                                                                      
-                                                                                                                      <div style="text-align:left;">
-                                                                                                                     
-                                                                                                                      Le membre est autorisé à :
-                                                                                                                      </div>
-                                                                                                                      <br>
 
-                                                                                                                       
-                                                                                                                           <input type="checkbox"> Faire un devis<br>
-                                                                                                                           <input type="checkbox"> Signer un contrat d'achat<br>
-                                                                                                                           <input type="checkbox"> Ajouter une référence<br>
-                                                                                                                           <input type="checkbox"> Signer un contrat de vente<br>                                                                                                                           
-                                                                                                                      
-                                                                                       
-                                                                                                                      <br>  
-                                                                                                                      <button class="pull-right btn btn-info" style="margin-top:10px">Créer le membre</button>   
-                                                                                                                       
-                                                                                                                  </div>
+
+
+                  <div style="text-align:left;">
+
+                  Le membre est autorisé à :
+                  </div>
+                  <br>
+
+
+                       <input type="checkbox"> Faire un devis<br>
+                       <input type="checkbox"> Signer un contrat d'achat<br>
+                       <input type="checkbox"> Ajouter une référence<br>
+                       <input type="checkbox"> Signer un contrat de vente<br>
+
+
+                  <br>#}
+
+
+                  {#<button class="pull-right btn btn-info" style="margin-top:10px">Créer le membre</button>#}
+                   
+                    <a href="{{ path('fos_user_registration_register') }}">Inscrire membre mairie</a>              
+              </div>
 </div>
-                                                                                                                   <br><br><br>              
-                                                                                                            <div class="col-md-10">
-                                                                                  <div class="headline v3 text-center"><br><br><h4>Habilitation des membres</h4></div></br>
-                                                                                                                  </div>
-                                                                                                                     <!-- Agents -->
+
+       <br><br><br>
+<div class="col-md-10">
+  <div class="headline v3 text-center"><br><br><h4>Habilitation des membres</h4></div></br>
+                                  </div>
+                                     <!-- Agents -->
                               <div class="content-panel agents-portfolio">
 
                               <p>PERSONNES HABILITEES A FAIRE UN DEVIS</p>
@@ -652,72 +656,8 @@
                                                                                                             <div class="col-md-9">
                                                                                                                        <div class="tag-box tag-box-v2">
                                                                                                                        <h3>Les étapes de ma démarche d’engagement simplifiée</h3>
-                                                                                                                        <table style="width:100%">
-                                                                                                                            <tr> 
-                                                                                                                                <td style="width:95%;padding:5px 0; border:solid 1px #ffffff;">                                                                                                                      
-                                                                                                                                    <input class="form-control" placeholder="Etape 1: J’ai estimé seul ou avec mon interlocuteur CIVILINC les biens que je peux valoriser" type="text" disabled> 
-                                                                                                                                </td>
-                                                                                                                                <td style="width:5%">
-                                                                                                                                    <img src="{{ asset('bundles/lsimarket/images/ok.png') }}" height="20" width="20" style="margin-left:10px">
-                                                                                                                                </td>
-                                                                                                                             </tr>
-                                                                                                                             <tr>                                                                                                                       
-                                                                                                                                <td style="width:95%;padding:5px 0; border:solid 1px #ffffff;">     
-                                                                                                                                    <input class="form-control" placeholder="Etape 2: j’ai estimé le budget achat associé" type="text" disabled>
-                                                                                                                                </td>
-                                                                                                                                <td style="width:5%">
-                                                                                                                                   <img src="{{ asset('bundles/lsimarket/images/ok.png') }}" height="20" width="20" style="margin-left:10px">
-                                                                                                                                </td>
-                                                                                                                             </tr>
-                                                                                                                             <tr>                                                                                                                       
-                                                                                                                                <td style="width:95%;padding:5px 0; border:solid 1px #ffffff;">  
-                                                                                                                                    <input class="form-control" placeholder="Etape 3: j’ai préparé la décision de l’Assemblée délibérante" type="text" disabled>
-                                                                                                                                </td>
-                                                                                                                                <td style="width:5%">
-                                                                                                                                    <img src="{{ asset('bundles/lsimarket/images/ok.png') }}" height="20" width="20" style="margin-left:10px">
-                                                                                                                                </td>
-                                                                                                                             </tr>
-                                                                                                                             <tr>                                                                                                                       
-                                                                                                                                <td style="width:95%;padding:5px 0; border:solid 1px #ffffff;">  
-                                                                                                                                    <input class="form-control" placeholder="Etape 4: j’ai archivé la décision de l’Assemblée délibérante, et saisi mon budget Achats dans la rubrique BUDGET" type="text" disabled>
-                                                                                                                                </td>
-                                                                                                                                <td style="width:5%">
-                                                                                                                                   <img src="{{ asset('bundles/lsimarket/images/ok.png') }}" height="20" width="20" style="margin-left:10px">
-                                                                                                                                </td>
-                                                                                                                             </tr>
-                                                                                                                             <tr>                                                                                                                       
-                                                                                                                                <td style="width:95%;padding:5px 0; border:solid 1px #ffffff;">  
-                                                                                                                                    <input class="form-control" placeholder="Définition des conditions de location" type="text" disabled>
-                                                                                                                                </td>
-                                                                                                                                <td style="width:5%">
-                                                                                                                                    <img src="{{ asset('bundles/lsimarket/images/ok.png') }}" height="20" width="20" style="margin-left:10px">
-                                                                                                                                </td>
-                                                                                                                             </tr>
-                                                                                                                             <tr>                                                                                                                       
-                                                                                                                                <td style="width:95%;padding:5px 0; border:solid 1px #ffffff;">  
-                                                                                                                                    <input class="form-control" placeholder="Définition du contrat d'assurance" type="text" disabled>
-                                                                                                                                </td>
-                                                                                                                                <td style="width:5%">
-                                                                                                                                    <img src="{{ asset('bundles/lsimarket/images/ko.png') }}" height="20" width="20" style="margin-left:10px">
-                                                                                                                                </td>
-                                                                                                                             </tr>
-                                                                                                                             <tr>                                                                                                                       
-                                                                                                                                <td style="width:95%;padding:5px 0; border:solid 1px #ffffff;"> 
-                                                                                                                                    <input class="form-control" placeholder="Définition autre ..." type="text" disabled>
-                                                                                                                                </td>
-                                                                                                                                <td style="width:5%">
-                                                                                                                                    <img src="{{ asset('bundles/lsimarket/images/pause.png') }}" height="20" width="20" style="margin-left:10px">
-                                                                                                                                </td>
-                                                                                                                             </tr>
-                                                                                                                             <tr>                                                                                                                       
-                                                                                                                                <td style="width:95%;padding:5px 0; border:solid 1px #ffffff;">  
-                                                                                                                                     <input class="form-control" placeholder="Définition autre ..." type="text" disabled> 
-                                                                                                                                </td>
-                                                                                                                                <td style="width:5%">
-                                                                                                                                     <img src="{{ asset('bundles/lsimarket/images/pause.png') }}" height="20" width="20" style="margin-left:10px">
-                                                                                                                                </td>
-                                                                                                                             </tr>
-                                                                                                                         </table>                                                                                                                       
+
+                                                                                                                           {{ render(controller('LSIMarketBundle:Market:demarcheAnnonce')) }}
 
                                                                                                                     </div>
                                                                                                                 </div> 

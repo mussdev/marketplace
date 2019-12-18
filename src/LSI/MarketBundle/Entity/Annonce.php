@@ -73,6 +73,12 @@ class Annonce
      */
     private $prixDefaut;
 
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="date_creation", type="date")
+     */
+    private $dateCreation;
 
     /**
      * @var string 
@@ -81,29 +87,6 @@ class Annonce
      * @Assert\NotBlank()
      */
     private $typeforfait;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nature", type="string", unique=false)
-     * @Assert\NotBlank()
-     */
-    private $nature;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fonction", type="string", unique=false)
-     * @Assert\NotBlank()
-     */
-    private $fonction;
-
-    /**
-     * @var date
-     *
-     * @ORM\Column(name="date_creation", type="date")
-     */
-    private $dateCreation;
 
     /**
      * @var time
@@ -134,6 +117,14 @@ class Annonce
     private $typeAnnul;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="assurances", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     */
+    private $assurances;
+
+    /**
      * @ORM\ManyToOne(targetEntity="LSI\MarketBundle\Entity\Mairie")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -155,6 +146,18 @@ class Annonce
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="LSI\MarketBundle\Entity\Nature", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $nature;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="LSI\MarketBundle\Entity\Fonction", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $fonction;
 
     /**
      * @ORM\ManyToMany(targetEntity="LSI\MarketBundle\Entity\Calendrier", cascade={"persist"})
@@ -502,6 +505,18 @@ class Annonce
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * @param mixed $images
+     *
+     * @return $this
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+
+        return $this;
     }
 
     /**
@@ -863,13 +878,37 @@ class Annonce
     }
 
     /**
-     * Set nature
+     * Set assurances
      *
-     * @param string $nature
+     * @param string $assurances
      *
      * @return Annonce
      */
-    public function setNature($nature)
+    public function setAssurances($assurances)
+    {
+        $this->assurances = $assurances;
+
+        return $this;
+    }
+
+    /**
+     * Get assurances
+     *
+     * @return string
+     */
+    public function getAssurances()
+    {
+        return $this->assurances;
+    }
+
+    /**
+     * Set nature
+     *
+     * @param \LSI\MarketBundle\Entity\Nature $nature
+     *
+     * @return Annonce
+     */
+    public function setNature(\LSI\MarketBundle\Entity\Nature $nature = null)
     {
         $this->nature = $nature;
 
@@ -879,7 +918,7 @@ class Annonce
     /**
      * Get nature
      *
-     * @return string
+     * @return \LSI\MarketBundle\Entity\Nature
      */
     public function getNature()
     {
@@ -889,11 +928,11 @@ class Annonce
     /**
      * Set fonction
      *
-     * @param string $fonction
+     * @param \LSI\MarketBundle\Entity\Fonction $fonction
      *
      * @return Annonce
      */
-    public function setFonction($fonction)
+    public function setFonction(\LSI\MarketBundle\Entity\Fonction $fonction = null)
     {
         $this->fonction = $fonction;
 
@@ -903,7 +942,7 @@ class Annonce
     /**
      * Get fonction
      *
-     * @return string
+     * @return \LSI\MarketBundle\Entity\Fonction
      */
     public function getFonction()
     {

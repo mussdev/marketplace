@@ -42,6 +42,7 @@ class UserType extends AbstractType
             ->remove('mairie')
             ->remove('administre')
             ->remove('adresse')
+            ->remove('membre')
         ;
     }
 

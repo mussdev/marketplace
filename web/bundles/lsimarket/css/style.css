@@ -1,8 +1,8 @@
 Retour (accesskey b)    Sauvegarder (accesskey s)    	Fichier : /www/marketplace/Mypublicspace/web/bundles/lsimarket/css/style.css
 Character encoding:    	Statut : Sauvegardé dans 2018-09-13 23:51:02 en utilisant le mode FTP_ASCII
 
-@charset "UTF-8";F
-/*F
+@charset "UTF-8";
+/*
 Theme Name: IDX-Home
 Version: 1.0.0
 
@@ -7109,16 +7109,6 @@ tbody.collapse.in {
         line-height: 20px; }
         .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-nav .open .dropdown-menu > li > a:focus {
           background-image: none; } }
-
-@media (max-width: 640px) {
-.navbar-form {
-     margin-left:-90px;
- margin-top: -30px;
-  margin-right: -15px;
-  margin-bottom:8px;
-box-shadow: none;
-}}
-
   @media (min-width: 768px) {
     .navbar-nav {
       float: left;
@@ -7183,13 +7173,12 @@ box-shadow: none;
         margin-bottom: 0; } }
   @media (min-width: 768px) {
     .navbar-form {
-width: auto;
+      width: auto;
       border: 0;
       margin-left: 0;
       margin-right: 0;
       padding-top: 0;
       padding-bottom: 0;
-
       box-shadow: none; } }
 
 .navbar-nav > li > .dropdown-menu {
@@ -8949,7 +8938,6 @@ button.close {
   th.visible-xs,
   td.visible-xs {
     display: table-cell !important; } }
-
 
 @media (max-width: 767px) {
   .visible-xs-block {
@@ -10807,9 +10795,7 @@ Heading
 
 @media (min-width: 992px) {
   .heading h1, .heading h2 {
-	font-size: 40px;
-	color: #006c95;
-} }
+    font-size: 50px; } }
 
 .article-title h2, .article-title h1 {
   font-size: 20px;
@@ -10874,8 +10860,7 @@ margin-top: -16px;}
     width: 100%;
     float: left;
     position: relative;
-    margin-top: -80px; 
-    margin-bottom: 0px; }
+    margin-top: -80px; }
   .grid-box h3 {
     font-family: "Gisha";
     font-size: 15px;
@@ -10893,14 +10878,13 @@ margin-top: -16px;}
     color: #fff;
     display: block;
     position: relative;
-    top: -20px;
+    top: 0;
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 62px 62px 0 0;
     border-color: #006c95 transparent transparent transparent;
-    font-size: 12px;
-    margin-top: 40px; }
+    font-size: 12px; }
     .grid-box .box-type.red {
       border-color: #de3326 transparent transparent transparent;
       color: #fff; }
@@ -11256,7 +11240,7 @@ Agent Details
     background: #7c0405;
     color: #433636; }
   .project-list .status {
-    background: #006c95;
+    background: #b08e05;
     color: #fff;
     text-transform: uppercase; }
     .project-list .status.sold {
@@ -11722,20 +11706,20 @@ Google Map
     .map-search-form .form-tab a {
       display: block;
       position: relative;
-      background: #006c95;
-      border: 1px solid #023a4f;
+      background: #605656;
+      border: 1px solid #7b6e6e;
       border-left: 0;
       font-size: 13px;
       text-align: center;
       width: 33.3333%;
-      color: #ffffff;
+      color: #b9d2f5;
       padding: 14px;
       float: left;
       text-transform: uppercase; }
       .map-search-form .form-tab a:first-child {
         border-left: 1px solid #605656; }
       .map-search-form .form-tab a.active {
-        background: #023a4f;
+        background: #433636;
         color: #fff; }
         .map-search-form .form-tab a.active:before {
           content: '';
@@ -12126,11 +12110,9 @@ blockquote {
   font-size: 14px; }
 
 .contents p {
-	color: #666;
-	margin-top: 20px;
-	line-height: 1.6;
-	text-align: justify;
-}
+  color: #666;
+  margin-top: 20px;
+  line-height: 1.6; }
 
 .dropcap, .dropcap-bg {
   float: left;
@@ -12437,27 +12419,9 @@ Animation Effects
     font-family: 'Gisha';
     overflow: hidden;
     border-width: 1px;
+    width: 50%;
     padding: 8px;
-margin-top:25%;
-
-    border-style: solid;
-    border-radius: 6px;    
-    background-color: #f6f6f6;
-    background-image: linear-gradient(top, #f6f6f6, #eae8e8);
-    opacity: 0.9;
-
-   
-}
-
-.form-wrapper1 {
-    font-size: 15px;
-    font-weight: 700;
-    font-family: 'Gisha';
-    overflow: hidden;
-    border-width: 1px;
-    padding: 8px;
-margin-top:25%;
-margin-left:10px;
+    margin: 30% auto;
     border-style: solid;
     border-radius: 6px;    
     background-color: #f6f6f6;
@@ -12500,7 +12464,7 @@ margin-left:10px;
 
 .form-wrapper #submit {   
     border: 1px solid #346C92;
-    height: 22px;
+    height: 42px;
     width:100%;
     padding: 0;
     cursor: pointer;
@@ -12631,19 +12595,3 @@ margin-left:10px;
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
-.espace_haut {height:60px; }
-/*style logo emplacement page home*/
-.logo_home {
-  margin-top:20px;
-  margin-left:20px;
-}
-/*Espace panneau bas page Home*/
-.style_pad {
-  margin-bottom:10px;
-
-}
-/*Largeur 50%*/
-.style_50p {
-  width:100%;
-}
-

@@ -23,3 +23,15 @@ services:
         class: LSI\MarketBundle\Listener\LoadDataListener
         tags:
             - { name: 'kernel.event_listener', event: 'fullcalendar.set_data', method: loadData }
+
+# service pour supprimer un fichier
+
+    lsi_market.file_remove:
+        class: LSIMarketBundle\Services\FileRemove
+        arguments: ['%stamp_dir%']
+
+# service pour telecharger un fichier
+
+    lsi_market.file_upload:
+        class: LSIMarketBundle\Services\FileUpload
+        arguments: ['%stamp_dir%']

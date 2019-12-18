@@ -24,12 +24,12 @@ class AnnonceType extends AbstractType
                 'label' => 'Titre de l\'annonce',
                 'required' => true,
             ))
-            ->add('nature',TextType::class, array(
+            /*->add('nature',TextType::class, array(
                 'label' => 'Nature' ,
                 'required' => true,))
             ->add('fonction',TextType::class, array(
                 'label' => 'Fonction',
-                'required' => true,))
+                'required' => true,))*/
             ->add('description', TextareaType::class, array(
                 'label' => 'Description de l\'annonce',
                 'required' => true,
@@ -74,6 +74,22 @@ class AnnonceType extends AbstractType
                 'expanded' => false,
                 'placeholder' => 'Sélectionner une catégorie',
             ))
+            ->add('nature', EntityType::class, array(
+                'label' => 'Nature de l\'annonce',
+                'class' => 'LSIMarketBundle:Nature',
+                'choice_label' => 'name_nature',
+                'multiple' => false,
+                'expanded' => false,
+                'placeholder' => 'Sélectionner une nature',
+            ))
+            ->add('fonction', EntityType::class, array(
+                'label' => 'Fonction de l\'annonce',
+                'class' => 'LSIMarketBundle:Fonction',
+                'choice_label' => 'name_fonction',
+                'multiple' => false,
+                'expanded' => false,
+                'placeholder' => 'Sélectionner une fonction',
+            ))
             ->add('typeAnnul', ChoiceType::class, array(
                 'label' => 'Type d\'annulation',
                 'placeholder' => 'Sélectionner le type d\'annulation',
@@ -82,6 +98,7 @@ class AnnonceType extends AbstractType
                     'Strict' => 'strict'
                 )
             ))
+            ->add('assurances', TextType::class)
             ->add('save', SubmitType::class, array())
         ;
         $builder

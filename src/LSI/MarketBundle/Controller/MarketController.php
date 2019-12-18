@@ -3,6 +3,8 @@
 namespace LSI\MarketBundle\Controller;
 
 
+use LSI\MarketBundle\Entity\Demarche;
+use LSI\MarketBundle\Form\DemarcheType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -66,10 +68,10 @@ class MarketController extends Controller {
             ))
             ->add('pays', TextType::class, array('required' => false,
                 ))
-            ->add('departement', TextType::class,
+            /*->add('departement', TextType::class,
                 array(
                     'required' => false,
-                ))
+                ))*/
             ->add('ville', TextType::class,
                 array(
                     'required' => false,
@@ -115,7 +117,7 @@ class MarketController extends Controller {
             
             $categ = $data['categorie'];
                 $pays = $data['pays'];
-                $depart = $data['departement'];
+               /* $depart = $data['departement'];*/
                 $ville = $data['ville'];
                 $prixmini = $data['mini'];
                 $prixmax = $data['max'];
@@ -126,7 +128,7 @@ class MarketController extends Controller {
             $reposi_annonce = $this->getDoctrine()->getRepository('LSIMarketBundle:Annonce');
              $em = $this->getDoctrine()->getManager();
               $mairiename = $em->getRepository('LSIMarketBundle:User')->findNameMairie();
-            $annonces = $reposi_annonce->findByannonce($categ, $pays, $depart, $ville, $prixmini, $prixmax, $datedebut, $datefin);
+            $annonces = $reposi_annonce->findByannonce($categ, $pays,  $ville, $prixmini, $prixmax, $datedebut, $datefin);
              $annadress = $annonces;
             return $this->render('LSIMarketBundle:market:offres.html.twig',
                 array('annonces' => $annonces,
@@ -430,7 +432,7 @@ class MarketController extends Controller {
                 'statut' => $statut,
                 'colordispo' => $colordispo,
                 'periodreserv' => $periodreserv,
-                'var' => $var,
+              /*  'var' => $var,*/
                 'anncat' => $annonceParCat,
                 'memeAuteur' => $annonceMemeAuteur,
                 'memeEpci' => $annonceMemeEpci,
@@ -452,7 +454,7 @@ class MarketController extends Controller {
                 'statut' => $statut,
                 'colordispo' => $colordispo,
                 'periodreserv' => $periodreserv,
-                'var' => $var,
+                /*'var' => $var,*/
                 'anncat' => $annonceParCat,
                 'memeAuteur' => $annonceMemeAuteur,
                 'memeEpci' => $annonceMemeEpci,
@@ -474,7 +476,7 @@ class MarketController extends Controller {
                 'statut' => $statut,
                 'colordispo' => $colordispo,
                 'periodreserv' => $periodreserv,
-                'var' => $var,
+              /*  'var' => $var,*/
                 'anncat' => $annonceParCat,
                 'memeAuteur' => $annonceMemeAuteur,
                 'memeEpci' => $annonceMemeEpci,
@@ -496,7 +498,7 @@ class MarketController extends Controller {
                 'statut' => $statut,
                 'colordispo' => $colordispo,
                 'periodreserv' => $periodreserv,
-                'var' => $var,
+                /*'var' => $var,*/
                 'anncat' => $annonceParCat,
                 'memeAuteur' => $annonceMemeAuteur,
                 'memeEpci' => $annonceMemeEpci,
@@ -510,7 +512,7 @@ class MarketController extends Controller {
         	'annonce' => $annonce,
             'auth' => $auteur[0],
             'periodreserv' => $periodreserv,
-            'var' => $var,
+           /* 'var' => $var,*/
             'anncat' => $annonceParCat,
             'memeAuteur' => $annonceMemeAuteur,
             'memeEpci' => $annonceMemeEpci,
@@ -675,7 +677,6 @@ class MarketController extends Controller {
     public function monEspaceAction(Request $request){
         $this->denyAccessUnlessGranted(['ROLE_MAIRIE', 'ROLE_PART', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN'], $this->redirectToRoute('fos_user_security_login'));
          $em = $this->getDoctrine()->getManager();
-
         // Recuperer l'id du User connecte
         $userId = $this->getUser()->getId();
 
@@ -710,15 +711,19 @@ class MarketController extends Controller {
                 'annonces' => $reservations,
                 'annoncesR' => $annonceReservees,
                 'mesannonces' => $annonces,
-                'erreur' => $msgErr));
+                'erreur' => $msgErr,
+            ));
         }
         
         return $this->render('LSIMarketBundle::monespace.html.twig', array(
             'annonces' => $reservations,
             'annoncesR' => $annonceReservees,
-            'mesannonces' => $annonces));
+            'mesannonces' => $annonces,
+            ));
         
     }
+
+    // Modifier une annonce
 
     // Modifier une annonce
 
@@ -748,13 +753,13 @@ class MarketController extends Controller {
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-          $annonce->setTitre($form->get('titre')->getData());
-          $annonce->setDescription($form->get('description')->getData());
-          $annonce->setPrixDefaut($form->get('prixDefaut')->getData());
-          $annonce->setRegleCond($form->get('regleCond')->getData());
-          $annonce->setCategorie($form->get('categorie')->getData());
-          $annonce->setAdresse($form->get('adresse')->getData());
-          $annonce->setAnnonceUpdateAt(new \DateTime('now'));
+            $annonce->setTitre($form->get('titre')->getData());
+            $annonce->setDescription($form->get('description')->getData());
+            $annonce->setPrixDefaut($form->get('prixDefaut')->getData());
+            $annonce->setRegleCond($form->get('regleCond')->getData());
+            $annonce->setCategorie($form->get('categorie')->getData());
+            $annonce->setAdresse($form->get('adresse')->getData());
+            $annonce->setAnnonceUpdateAt(new \DateTime('now'));
             $em = $this->getDoctrine()->getManager();
             $em->persist($annonce);
             $em->flush();
@@ -770,6 +775,7 @@ class MarketController extends Controller {
             'listimg' => $listimg,
             /* 'images'=> $annonce->getImages()->getWebPath() */));
     }
+
 
     public function dupliquerAction(Request $request,$id){
 
@@ -1005,11 +1011,11 @@ class MarketController extends Controller {
                           'placeholder' => 'Selection une categorie',
                       ))
                     ->add('pays', CountryType::class, array())
-                    ->add('departement', ChoiceType::class, array(
+                    /*->add('departement', ChoiceType::class, array(
                           'choices' => array(
                               ''
                           )
-                      ))
+                      ))*/
                     ->add('ville', ChoiceType::class, array(
                         'choices' => array(
                             ''
@@ -1419,7 +1425,7 @@ class MarketController extends Controller {
 
     }
 
-     public function gestiondestarifAction(Request $req, $id){
+    public function gestiondestarifAction(Request $req, $id){
         $this->denyAccessUnlessGranted('ROLE_MAIRIE', $this->redirectToRoute('fos_user_security_login'));
         $em = $this->getDoctrine()->getManager();
         $plage = new AnnoncePrix();
@@ -1438,7 +1444,7 @@ class MarketController extends Controller {
         return $this->render('LSIMarketBundle:market:plagetarif.html.twig', array('form' => $form->createView()));
     }
 
-     public function histoireAction(){
+    public function histoireAction(){
 
         return $this->render('LSIMarketBundle:une_histoire_et_des_valeurs:une_histoire_des_valeurs.html.twig');
     }
@@ -1467,6 +1473,81 @@ class MarketController extends Controller {
 
         return $this->render('LSIMarketBundle::un_concept_innovant.html.twig');
     }
+
+    // Methode pour le traitement de la demarche à renseigner par la mairie avant la creation d'une annonce
+    public function demarcheAnnonceAction(Request $request){
+        $demarche = new Demarche();
+        //dump($demarche);
+        $this->denyAccessUnlessGranted(['ROLE_MAIRIE', 'ROLE_PART'], $this->redirectToRoute('fos_user_security_login'));
+        // Recuperation de l'id de l'utilisateur qui ne peut être que la mairie
+        $userid = $this->getUser()->getId();
+        $repouser = $this->getDoctrine()->getRepository('LSIMarketBundle:User');
+        $idmairie = $this->getUser()->getMairie();
+       // dump($idmairie);
+       // dump($idmairie->getMairie()->getId());
+        // Creation du formulaire de la demarche
+        $form = $this->createForm(DemarcheType::class, $demarche);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+           $demarche->setMairie($idmairie);
+          //var_dump($demarche); die;
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($demarche);
+            $em->flush();
+            return $this->render('LSIMarketBundle:market:demarche.html.twig', array(
+                'formdemarche' => $form->createView(),
+            ));
+        }
+        return $this->render('LSIMarketBundle:market:demarche.html.twig', array(
+            'formdemarche' => $form->createView(),
+        ));
+    }
+
+    // Nouveau traitement de messagerie
+
+// Fait un post...
+    public function envoiemessageAction(Request $request){
+        $this->denyAccessUnlessGranted(['ROLE_MAIRIE', 'ROLE_PART'], $this->redirectToRoute('fos_user_security_login'));
+        $userid = $this->getUser()->getId();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $msg = new Message();
+        // Recuperer le username du destinateur
+        $repousernamereser = $this->getDoctrine()->getRepository('LSIMarketBundle:Reserver');
+        $destinateur = $repousernamereser->finddest($id);
+
+        
+    }
+
+// Methode pour qui renvoie la derniere annonce cree la mairie
+
+ public function derniereAnnonceAction(){
+    /*$this->denyAccessUnlessGranted('ROLE_MAIRIE', $this->redirectToRoute('fos_user_security_login'));*/
+    $em = $this->getDoctrine()->getManager();
+
+    // Recuperer le User connecte
+    $userId = $this->getUser()->getMairie();
+
+    // Recuperer les annonces en fonction du User connecte.
+    $annonces = $em->getRepository('LSIMarketBundle:Annonce')->findMesAnnonces($userId);
+
+    // Recuperer la derniere ajout d'annonce
+    $annoncerecente = $em->getRepository('LSIMarketBundle:Annonce')->findAnnonceRecente($userId);
+
+    // Recuperation des membres de la mairie
+    $membres = $em->getRepository('LSIMarketBundle:User')->habilitation($userId);
+    
+    if (null === $annoncerecente){
+        echo 'Vous n\'avez créer aucune annonce !';
+    }
+
+    return $this->render('LSIMarketBundle:mairie:offreur_annonce_recente.html.twig', array('annoncerecente' => $annoncerecente,
+        'membresmairie' => $membres,
+        'listeannonce' => $annonces,
+        ));
+
+}
 
     /* FIN  */
 

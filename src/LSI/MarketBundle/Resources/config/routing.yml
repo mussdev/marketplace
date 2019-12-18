@@ -431,5 +431,28 @@ ls_imarket_annonce_rechavancee:
     defaults:
         _controller: LSIMarketBundle:Market:rechavancee
 
+# Route pour les demarches à televerser avant la creation d'une annonce
+
+ls_imarket_annonce_demarche:
+    path: /annonce/demarche
+    defaults:
+        _controller: LSIMarketBundle:Market:demarcheAnnonce
+
+#------------------------- Route pour le tchat -------------------
+
+# Envoie un message
+
+ls_imarket_tchat_post:
+    path: /tchat/post
+    defaults:
+        _controller: LSIMarketBundle:Market:envoiemessage
+
+# Route pour recuperer l'annonce recente
+
+ls_imarket_annonce_recente:
+    path: /annonce/recente
+    defaults:
+        _controller: LSIMarketBundle:Market:derniereAnnonce
+
 #------------------------------------------- Fin ----------------------------------------------------------------------
 

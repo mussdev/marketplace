@@ -62,6 +62,14 @@
                     {{ form_row(form.categorie) }}
                 </div>
                 {{ form_errors(form.categorie) }}
+                <div class="form-group">
+                    {{ form_row(form.nature) }}
+                </div>
+                {{ form_errors(form.nature) }}
+                <div class="form-group">
+                    {{ form_row(form.fonction) }}
+                </div>
+                {{ form_errors(form.fonction) }}
             </div>
             <div class="col-xs-6 col-md-6 col-lg-6">
             	<div class="form-group">
@@ -85,9 +93,9 @@
                 </div>
                 {{ form_errors(form.adresse.rue) }}
                 <div class="form-group">
-                    {{ form_row(form.adresse.departement,  {'attr': {'placeholder': 'Departement'}}) }}
+                    {{ form_row(form.assurances,  {'attr': {'placeholder': 'Assurances'}}) }}
                 </div>
-                {{ form_errors(form.adresse.codePostal) }}
+                {{ form_errors(form.assurances) }}
 
                 <div class="form-group" id="" data-prototype="">
                     {{ form_widget(form.images) }}

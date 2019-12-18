@@ -1,0 +1,67 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% endblock %}
+
+<table class="table table-condensed">
+    {{ form_start(formdemarche) }}
+    <tr>
+        <td>
+            {{ form_label(formdemarche.docbien) }}
+        </td>
+        <td>
+            {{ form_widget(formdemarche.docbien) }}
+        </td>
+        <td style="width:5%"> <img src="{{ asset('bundles/lsimarket/images/ko.png') }}" height="20" width="20" style="margin-left:10px"> </td>
+    </tr>
+    <tr>
+        <td>
+            {{ form_label(formdemarche.docbudget) }}
+        </td>
+        <td>
+            {{ form_widget(formdemarche.docbudget) }}
+        </td>
+        <td style="width:5%"> <img src="{{ asset('bundles/lsimarket/images/ko.png') }}" height="20" width="20" style="margin-left:10px"> </td>
+    </tr>
+    <tr>
+        <td>
+            {{ form_label(formdemarche.docdecision) }}
+        </td>
+        <td>
+            {{ form_widget(formdemarche.docdecision) }}
+        </td>
+        <td style="width:5%"> <img src="{{ asset('bundles/lsimarket/images/ko.png') }}" height="20" width="20" style="margin-left:10px"> </td>
+    </tr>
+    <tr>
+        <td>
+            {{ form_label(formdemarche.docdecisionbudget) }}
+        </td>
+        <td>
+            {{ form_widget(formdemarche.docdecisionbudget) }}
+        </td>
+        <td style="width:5%"> <img src="{{ asset('bundles/lsimarket/images/ko.png') }}" height="20" width="20" style="margin-left:10px"> </td>
+    </tr>
+    <tr>
+        <td>
+            {{ form_label(formdemarche.conditionlocation) }}
+        </td>
+        <td>
+            {{ form_widget(formdemarche.conditionlocation) }}
+        </td>
+        <td style="width:5%"> <img src="{{ asset('bundles/lsimarket/images/ko.png') }}" height="20" width="20" style="margin-left:10px"> </td>
+    </tr>
+    <tr>
+        <td>
+            {{ form_label(formdemarche.contratassurance) }}
+        </td>
+        <td>
+            {{ form_widget(formdemarche.contratassurance) }}
+        </td>
+        <td style="width:5%"> <img src="{{ asset('bundles/lsimarket/images/ko.png') }}" height="20" width="20" style="margin-left:10px"> </td>
+    </tr>
+    <button type="submit" class="pull-right btn btn-success" style="position: relative; top: 295px" value="demarche" name="btn-demarche" id="demarche">Envoyer</button>
+
+    {{ form_end(formdemarche) }}
+</table>
+
+
+

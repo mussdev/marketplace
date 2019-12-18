@@ -80,6 +80,7 @@ class RegistrationType extends AbstractType {
             ->add('adresse', AdresseType::class)
             ->add('mairie', MairieType::class, array('required' => false))
             ->add('administre', AdministreType::class, array('required' => false))
+            ->add('membre', MembreType::class)
             ;
 
         //$builder->remove('cgu');
@@ -99,12 +100,16 @@ class RegistrationType extends AbstractType {
                 // Teste la valeur de type
                 if ($user['type'] === 'mairie'){ // Si null, alors il s'agit d'une mairie
                     $event->getForm()->remove('administre'); // Puis on retire l'attribut 'administre' du formulaire
+                    $event->getForm()->remove('membre'); // On retire l'attribut 'membre' du formulaire
 
                 }elseif ($user['type'] === 'administre'){ // Idem
                     $event->getForm()->remove('mairie');
+                    $event->getForm()->remove('membre');
                 }
             }
         );
+
+        
     }
 
     public function configureOptions(OptionsResolver $resolver){

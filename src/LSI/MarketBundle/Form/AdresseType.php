@@ -30,9 +30,7 @@ class AdresseType extends AbstractType
             ->add('codePostal', TextType::class, array(
                 'constraints' => array(
                     new NotBlank())))
-            ->add('departement', TextType::class, array(
-                'constraints' => array(
-                    new NotBlank())))
+
         ;
     }
 

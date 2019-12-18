@@ -35,6 +35,8 @@ class AnnonceRepository extends EntityRepository {
         return $qb->getQuery()->getResult();
     }
 
+    
+
     // recuperer le titre de l'annonce en fonction de son id
     public function titreAnnonce($id){
         $qb = $this->createQueryBuilder('a')
@@ -691,7 +693,7 @@ class AnnonceRepository extends EntityRepository {
 
     }*/
 
-    public function findByannonce($categorie, $pays, $depart, $ville, $prixmini, $prixmax, $datdebut, $datefin ){
+    public function findByannonce($categorie, $pays,  $ville, $prixmini, $prixmax, $datdebut, $datefin ){
         $req = $this->createQueryBuilder('a');
 
         $req
@@ -703,7 +705,7 @@ class AnnonceRepository extends EntityRepository {
             ->addSelect('calendar')
             ;
 
-        if($categorie != null && $pays == null && $depart == null && $ville == null &&
+        if($categorie != null && $pays == null && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null ) {
 
             $req->where('cat.id= :id')
@@ -711,34 +713,34 @@ class AnnonceRepository extends EntityRepository {
 
             return $req->getQuery()->setMaxResults(10)->getResult();
 
-        }elseif ($categorie == null && $pays != null && $depart == null && $ville == null &&
+        }elseif ($categorie == null && $pays != null  && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null) {
 
             $req->where('adrss.pays= :pays')
                 ->setParameter('pays', $pays);
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart != null && $ville == null &&
+        }elseif ($categorie == null && $pays == null && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null) {
 
             $req->where('adrss.pays= :pays')
                 ->setParameter('pays', $pays);
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart == null && $ville != null &&
+        }elseif ($categorie == null && $pays == null && $ville != null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null) {
 
             $req->where('adrss.ville= :ville')
                 ->setParameter('ville', $ville);
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart == null && $ville == null &&
+        }elseif ($categorie == null && $pays == null && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut == null && $datefin == null) {
 
            $req->where($req->expr()->between('a.prixDefaut', $prixmini, $prixmax));
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart == null && $ville == null &&
+        }elseif ($categorie == null && $pays == null && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut != null && $datefin != null) {
 
             $req->where('calendar.debut >= :debut')
@@ -748,7 +750,7 @@ class AnnonceRepository extends EntityRepository {
 
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays != null && $depart == null && $ville == null &&
+        }elseif ($categorie != null && $pays != null && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null) {
 
             $req->where('cat.id= :id')
@@ -757,7 +759,7 @@ class AnnonceRepository extends EntityRepository {
                 ->setParameter('pays', $pays);
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays == null && $depart != null && $ville == null &&
+        }elseif ($categorie != null && $pays == null && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null) {
 
             $req->where('cat.id= :id')
@@ -766,7 +768,7 @@ class AnnonceRepository extends EntityRepository {
                 ->setParameter('pays', $pays);
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays == null && $depart == null && $ville != null &&
+        }elseif ($categorie != null && $pays == null && $ville != null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null) {
 
             $req->where('cat.id= :id')
@@ -775,7 +777,7 @@ class AnnonceRepository extends EntityRepository {
                 ->setParameter('ville', $ville);
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays == null && $depart == null && $ville == null &&
+        }elseif ($categorie != null && $pays == null  && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut == null && $datefin == null) {
 
             $req->where('cat.id= :id')
@@ -786,7 +788,7 @@ class AnnonceRepository extends EntityRepository {
                 ->setParameter('prixDefaut', $prixmax);
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays == null && $depart == null && $ville == null &&
+        }elseif ($categorie != null && $pays == null && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut != null && $datefin != null) {
 
             $req->where('cat.id= :id')
@@ -797,7 +799,7 @@ class AnnonceRepository extends EntityRepository {
                 ->setParameter('fin', $datefin);
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays != null && $depart != null && $ville == null &&
+        }/*elseif ($categorie == null && $pays != null && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null) {
 
             $req->where('adrss.pays= :pays')
@@ -808,7 +810,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays != null && $depart == null && $ville != null &&
+        }*/elseif ($categorie == null && $pays != null && $ville != null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null) {
 
             $req->where('adrss.pays= :pays')
@@ -818,7 +820,7 @@ class AnnonceRepository extends EntityRepository {
                 ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays != null && $depart == null && $ville == null &&
+        }elseif ($categorie == null && $pays != null && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut == null && $datefin == null) {
 
             $req->where('adrss.pays= :pays')
@@ -827,7 +829,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays != null && $depart == null && $ville == null &&
+        }elseif ($categorie == null && $pays != null && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut != null && $datefin != null) {
 
             $req->where('adrss.pays= :pays')
@@ -839,7 +841,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart != null && $ville != null &&
+        }/*elseif ($categorie == null && $pays == null && $ville != null &&
             $prixmini == null && $prixmax == null && $datdebut == null && $datefin == null) {
 
             $req->where('adrss.departement= :departement')
@@ -850,7 +852,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart != null && $ville == null &&
+        }*//*elseif ($categorie == null && $pays == null && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut == null && $datefin == null) {
 
             $req->where('adrss.departement= :departement')
@@ -860,7 +862,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart != null && $ville == null &&
+        }*//*elseif ($categorie == null && $pays == null && $depart != null && $ville == null &&
             $prixmini == null && $prixmax == null && $datdebut != null && $datefin != null) {
 
             $req->where('adrss.departement= :departement')
@@ -873,7 +875,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart == null && $ville != null &&
+        }*//*elseif ($categorie == null && $pays == null && $depart == null && $ville != null &&
             $prixmini == null && $prixmax == null && $datdebut != null && $datefin != null) {
 
             $req->where('adrss.ville= :ville')
@@ -886,7 +888,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart == null && $ville != null &&
+        }*/elseif ($categorie == null && $pays == null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut == null && $datefin == null) {
 
             $req->where('adrss.ville= :ville')
@@ -896,7 +898,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart == null && $ville == null &&
+        }elseif ($categorie == null && $pays == null && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('calendar.debut >= :debut')
@@ -908,15 +910,15 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays != null && $depart != null && $ville != null &&
+        }elseif ($categorie != null && $pays != null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('cat.id= :id')
                 ->setParameter('id', $categorie)
                 ->andWhere('adrss.pays= :pays')
                 ->setParameter('pays', $pays)
-                ->andWhere('adrss.departement= :departement')
-                ->setParameter('departement', $depart)
+                /*->andWhere('adrss.departement= :departement')
+                ->setParameter('departement', $depart)*/
                 ->andWhere('adrss.ville= :ville')
                 ->setParameter('ville', $ville)
                 ->andWhere('calendar.debut <= :debut')
@@ -928,7 +930,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays == null && $depart == null && $ville == null &&
+        }elseif ($categorie != null && $pays == null && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('cat.id= :id')
@@ -942,7 +944,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays != null && $depart == null && $ville == null &&
+        }elseif ($categorie != null && $pays != null && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('cat.id= :id')
@@ -958,15 +960,15 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays != null && $depart != null && $ville == null &&
+        }elseif ($categorie != null && $pays != null && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('cat.id= :id')
                 ->setParameter('id', $categorie)
                 ->andWhere('adrss.pays= :pays')
                 ->setParameter('pays', $pays)
-                ->andWhere('adrss.departement= :departement')
-                ->setParameter('departement', $depart)
+             /*   ->andWhere('adrss.departement= :departement')
+                ->setParameter('departement', $depart)*/
                 ->andWhere('calendar.debut >= :debut')
                 ->setParameter('debut', $datdebut)
                 ->andWhere('calendar.fin <= :fin')
@@ -976,7 +978,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart == null && $ville != null &&
+        }elseif ($categorie == null && $pays == null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('calendar.debut >= :debut')
@@ -990,7 +992,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart != null && $ville != null &&
+        }elseif ($categorie == null && $pays == null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('calendar.debut >= :debut')
@@ -999,14 +1001,14 @@ class AnnonceRepository extends EntityRepository {
                 ->setParameter('fin', $datefin)
                 ->andWhere('adrss.ville= :ville')
                 ->setParameter('ville', $ville)
-                ->andWhere('adrss.departement= :departement')
-                ->setParameter('departement', $depart)
+              /*  ->andWhere('adrss.departement= :departement')
+                ->setParameter('departement', $depart)*/
                 ->andWhere($req->expr()->between('a.prixDefaut', $prixmini, $prixmax))
 
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays != null && $depart != null && $ville != null &&
+        }elseif ($categorie == null && $pays != null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('calendar.debut >= :debut')
@@ -1015,8 +1017,8 @@ class AnnonceRepository extends EntityRepository {
                 ->setParameter('fin', $datefin)
                 ->andWhere('adrss.ville= :ville')
                 ->setParameter('ville', $ville)
-                ->andWhere('adrss.departement= :departement')
-                ->setParameter('departement', $depart)
+               /* ->andWhere('adrss.departement= :departement')
+                ->setParameter('departement', $depart)*/
                 ->andWhere('adrss.pays= :pays')
                 ->setParameter('pays', $pays)
                 ->andWhere($req->expr()->between('a.prixDefaut', $prixmini, $prixmax))
@@ -1024,7 +1026,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays != null && $depart == null && $ville != null &&
+        }elseif ($categorie == null && $pays != null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('calendar.debut >= :debut')
@@ -1040,7 +1042,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays != null && $depart == null && $ville == null &&
+        }elseif ($categorie == null && $pays != null && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('calendar.debut >= :debut')
@@ -1054,7 +1056,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart != null && $ville != null &&
+        }elseif ($categorie == null && $pays == null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('calendar.debut >= :debut')
@@ -1063,28 +1065,28 @@ class AnnonceRepository extends EntityRepository {
                 ->setParameter('fin', $datefin)
                 ->andWhere('adrss.ville= :ville')
                 ->setParameter('ville', $ville)
-                ->andWhere('adrss.departement= :departement')
-                ->setParameter('departement', $depart)
+            /*    ->andWhere('adrss.departement= :departement')
+                ->setParameter('departement', $depart)*/
                 ->andWhere($req->expr()->between('a.prixDefaut', $prixmini, $prixmax))
 
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie == null && $pays == null && $depart != null && $ville == null &&
+        }elseif ($categorie == null && $pays == null && $ville == null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('calendar.debut >= :debut')
                 ->setParameter('debut', $datdebut)
                 ->andWhere('calendar.fin <= :fin')
                 ->setParameter('fin', $datefin)
-                ->andWhere('adrss.departement= :departement')
-                ->setParameter('departement', $depart)
+               /* ->andWhere('adrss.departement= :departement')
+                ->setParameter('departement', $depart)*/
                 ->andWhere($req->expr()->between('a.prixDefaut', $prixmini, $prixmax))
 
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays != null && $depart == null && $ville != null &&
+        }elseif ($categorie != null && $pays != null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('cat.id= :id')
@@ -1102,7 +1104,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays == null && $depart == null && $ville != null &&
+        }elseif ($categorie != null && $pays == null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut == null && $datefin == null) {
 
             $req->where('cat.id= :id')
@@ -1114,7 +1116,7 @@ class AnnonceRepository extends EntityRepository {
             ;
 
             return $req->getQuery()->setMaxResults(10)->getResult();
-        }elseif ($categorie != null && $pays == null && $depart == null && $ville != null &&
+        }elseif ($categorie != null && $pays == null && $ville != null &&
             $prixmini != null && $prixmax != null && $datdebut != null && $datefin != null) {
 
             $req->where('cat.id= :id')
@@ -1195,7 +1197,7 @@ class AnnonceRepository extends EntityRepository {
         return $qb->getQuery()->getResult();
     }
 
-	// Requête qui gère les annonces sur la map
+	// Requï¿½te qui gï¿½re les annonces sur la map
 
 public function findAnnon(){
 
@@ -1206,5 +1208,19 @@ public function findAnnon(){
 
         return $req->getQuery()->getResult();
 }
+
+// Recuperer l'annonce recemment crÃ©e
+
+    public function findAnnonceRecente($id){
+        $req = $this->createQueryBuilder('a');
+
+        $req->where('a.mairie = :id')
+            ->setParameter('id', $id)
+            ->orderBy('a.dateCreation', 'DESC')
+            ->setMaxResults(1);
+            ;
+
+        return $req->getQuery()->getResult();
+    }
 
 }

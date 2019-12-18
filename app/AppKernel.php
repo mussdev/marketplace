@@ -17,6 +17,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new LSI\MarketBundle\LSIMarketBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            // Bundle pour la pagination des pages
+             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
             // Gestion des mises à jour bases de données
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),

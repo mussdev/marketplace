@@ -51,15 +51,6 @@ class Adresse
     private $codePostal;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="departement", type="string", length=55, nullable=true)
-     */
-    private $departement;
-
-
-
-    /**
      * Get id
      *
      * @return int

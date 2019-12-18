@@ -106,7 +106,8 @@
 									<a href="{{ path('ls_imarket_traitement_demandeur_modifierreserv', {'id': reservation.id }) }}" type="submit" class="btn btn-success" value="modifier" name="btn-modifier" id="modifier">Modifier</a>
 								</span>
 								<span>
-									<a href="{{ path('ls_imarket_traitement_messageriea', {'id': reservation.id }) }}" class="btn btn-success" value="msg" name="btn-msg" id="msg">Ecrire message</a>
+									<!-- <a href="{{ path('ls_imarket_traitement_messageriea', {'id': reservation.id }) }}" class="btn btn-success" value="msg" name="btn-msg" id="msg">Ecrire message</a> -->
+									<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Messagerie</button>
 								</span>
 							{% endif %}
 						</div>
@@ -243,6 +244,27 @@
 						<h5><span>Ou appeler notre support au </span></h5>
 						<p><span class="large-text-1"><span class="iconic-phone-square"></span>+33 1 34 54 56 67</span></p>
 					</div>
+					<!-- Fenetre modal pour la messagerie -->
+					  <div id="id01" class="w3-modal">
+					    <div class="w3-modal-content" style="width: 330px">
+					      <header class="w3-container w3-teal"> 
+					        <span onclick="document.getElementById('id01').style.display='none'" 
+					        class="w3-button w3-display-topright">&times;</span>
+					        <h2>Messagerie</h2>
+					      </header>
+					      <div class="w3-container" style="height: 350px; overflow: auto;">
+					        <p><h4>Auteur : </h4><span>Reponse</span></p>
+					        <br><br>
+					        <p><span>Reponse</span></p>
+					      </div>
+					      <form class="w3-container" action="ls_imarket_tchat_post" method="get" id="formtchat">
+						      	<input type="message" name="" name="message" id="message" style="width:100%;" placeholder="Ecrire message..."/>
+					      </form>
+					      <footer class="w3-container w3-teal">
+					        <p>Modal Footer</p>
+					      </footer>
+					    </div>
+					  </div>
 				</div>
 			</div>
 		</div>   

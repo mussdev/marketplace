@@ -38,6 +38,12 @@ class User extends BaseUser //implements ParticipantInterface
     protected $administre;
 
     /**
+     * @ORM\ManyToOne(targetEntity="LSI\MarketBundle\Entity\Membre", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $membre;
+
+    /**
      * @var string
      * 
      * @ORM\Column(name="nom", type="string", length=50, nullable=true)
@@ -345,5 +351,29 @@ class User extends BaseUser //implements ParticipantInterface
     public function getAdresse()
     {
         return $this->adresse;
+    }
+
+    /**
+     * Set membre
+     *
+     * @param \LSI\MarketBundle\Entity\Membre $membre
+     *
+     * @return User
+     */
+    public function setMembre(\LSI\MarketBundle\Entity\Membre $membre = null)
+    {
+        $this->membre = $membre;
+
+        return $this;
+    }
+
+    /**
+     * Get membre
+     *
+     * @return \LSI\MarketBundle\Entity\Membre
+     */
+    public function getMembre()
+    {
+        return $this->membre;
     }
 }
